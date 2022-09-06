@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -37,6 +38,10 @@ public class Usuario {
         inverseJoinColumns = { @JoinColumn(name = "aut_id") }
     )
     private Set<Autorizacao> autorizacoes;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private Set<Anotacao> anotacoes;
 
     public Long getId() {
         return id;
@@ -70,5 +75,12 @@ public class Usuario {
         this.autorizacoes = autorizacoes;
     }
 
-    
+    public Set<Anotacao> getAnotacoes() {
+        return anotacoes;
+    }
+
+    public void setAnotacoes(Set<Anotacao> anotacoes) {
+        this.anotacoes = anotacoes;
+    }
+
 }
