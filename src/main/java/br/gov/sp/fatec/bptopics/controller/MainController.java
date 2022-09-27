@@ -8,6 +8,6 @@ public class MainController {
     
     @GetMapping
     public String hello() {
-        return "hello";
+        return "Projeto de Tópicos. Prof Mineda!";
     }
 }
