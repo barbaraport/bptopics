@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.gov.sp.fatec.bptopics.dto.UserAlmostEmpty;
 import br.gov.sp.fatec.bptopics.entity.Usuario;
 import br.gov.sp.fatec.bptopics.service.SegurancaService;
 
@@ -33,7 +34,12 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario novoUsuario(@RequestBody Usuario usuario) {
-        return segurancaService.novoUsuario(usuario);
+    public Usuario novoUsuarioFull(@RequestBody Usuario usuario) {
+        return segurancaService.novoUsuario(usuario.getNome(), usuario.getSenha());
+    }
+
+    @PostMapping(value = "/novo")
+    public Usuario novoUsuarioAlmostEmpty(@RequestBody UserAlmostEmpty usuario) {
+        return segurancaService.novoUsuario(usuario.getNome(), usuario.getSenha());
     }
 }
