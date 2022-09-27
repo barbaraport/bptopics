@@ -28,7 +28,7 @@ public class SegurancaServiceImpl implements SegurancaService {
     private AutorizacaoRepository autorizacaoRepository;
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Usuario novoUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
