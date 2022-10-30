@@ -95,4 +95,13 @@ public class SegurancaServiceImpl implements SegurancaService {
         return novoUsuario(usuario);
     }
     
+    @Override
+    @PreAuthorize("isAuthenticated()")
+    public List<Usuario> burcarPorNome(String nome) {
+        if (nome == null || nome.isBlank()) {
+            return todosUsuarios();
+        }
+        
+        return usuarioRepository.findByNomeContains(nome);
+    }
 }

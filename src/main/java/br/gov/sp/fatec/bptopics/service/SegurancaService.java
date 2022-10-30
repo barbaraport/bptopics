@@ -17,4 +17,6 @@ public interface SegurancaService extends UserDetailsService {
     public List<Usuario> todosUsuarios();
 
     public Usuario buscarPorId(Long id);
+
+    public List<Usuario> burcarPorNome(String nome);
 }
